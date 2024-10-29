@@ -1,4 +1,4 @@
-# :cake Irust
+# 🍰 Irust
 
 This repository is about how to learn rust step by step.
 
