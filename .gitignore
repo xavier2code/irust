@@ -1,1 +1,12 @@
+# Cargo
+target/
+Cargo.lock
+!/Cargo.lock
+
+# Ignore file for editors like Helix
+.ignore
+
+
+# Added by cargo
+
 /target
