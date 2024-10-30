@@ -1,4 +1,8 @@
-# 🍰 Irust
+# 🍰 Irust 
+
+
+<img src="https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva/branch/main?svg=true" alt="Project Badge">
+
 
 This repository is about how to learn rust step by step.
 
