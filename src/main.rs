@@ -5,6 +5,14 @@ fn main() {
     show_area();
 }
 
+/* <================== chapter1 Getting Started ===============> */
+
+/* <================== chapter2 Programming Guessing Game ===============> */
+
+/* <================== chapter3 Common Programming Concepts ===============> */
+
+/* <================== chapter4 Understanding Ownership ===============> */
+
 /* <================== chapter5 Using Structs to Structure Related Data ===============> */
 
 /* 5.1 */
@@ -133,6 +141,12 @@ fn show_area() {
     };
 
     println!("Rect1 : {}", rect1.area());
+    println!("Rect1 : {}", rect1.others(1));
+    if rect1.width() {
+        println!("The rectangle has a nonzero width; it is {}", rect1.width);
+    }
+    let square = Rectangle::square(1);
+    println!("Square : {}", square.width);
 
 }
 
@@ -145,4 +159,38 @@ impl Rectangle {
     fn area(&self) -> u32 {
         self.width * self.height
     }
+
+    fn others(&self, other: u32) -> u32 {
+        (self.width + other) * (self.height + other)
+    }
+
+    fn width(&self) -> bool {
+        self.width > 0
+    }
 }
+
+// Multiple impl Blocks
+// Associated functions that aren’t methods are often used for 
+// constructors that will return a new instance of the struct.
+impl Rectangle {
+    fn square(size: u32) -> Self {
+        Self {
+            width: size,
+            height: size,
+        }
+    }
+}
+
+/*
+ * Summary
+ * Structs let you create custom types that are meaningful 
+ * for your domain. By using structs, you can keep associated 
+ * pieces of data connected to each other and name each piece 
+ * to make your code clear. In impl blocks, you can define 
+ * functions that are associated with your type, and methods 
+ * are a kind of associated function that let you specify the 
+ * behavior that instances of your structs have.
+ * But structs aren’t the only way you can create custom types: 
+ * let’s turn to Rust’s enum feature to add another tool to your 
+ * toolbox.
+ */
