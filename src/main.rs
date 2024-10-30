@@ -1,4 +1,8 @@
+use std::io;
+
 fn main() {
+    /* 2.0 */
+    guessing_game();
     /* 5.1 */
     create_user();
     /* 5.2 */
@@ -7,7 +11,21 @@ fn main() {
 
 /* <================== chapter1 Getting Started ===============> */
 
+
 /* <================== chapter2 Programming Guessing Game ===============> */
+fn guessing_game() {
+    println!("Guess the number!");
+
+    println!("Please input your guess.");
+
+    let mut guess = String::new();
+
+    io::stdin()
+        .read_line(&mut guess)
+        .expect("Failed to read line");
+
+    println!("You guessed: {}", guess);
+}
 
 /* <================== chapter3 Common Programming Concepts ===============> */
 
