@@ -15,6 +15,36 @@ pub fn new_card(card: Card) {
     println!("╰{}╯", "─".repeat(border_len));
 }
 
+// generator random card with card size
+pub fn random_cards(size: usize) -> Vec<Card> {
+    let mut cards = Vec::new();
+    for _ in 0..size {
+        let number = match rand::random::<u8>() % 13 {
+            0 => CardNumber::Two,
+            1 => CardNumber::Three,
+            2 => CardNumber::Four,
+            3 => CardNumber::Five,
+            4 => CardNumber::Six,
+            5 => CardNumber::Seven,
+            6 => CardNumber::Eight,
+            7 => CardNumber::Nine,
+            8 => CardNumber::Ten,
+            9 => CardNumber::J,
+            10 => CardNumber::Q,
+            11 => CardNumber::K,
+            _ => CardNumber::A,
+        };
+        let suit = match rand::random::<u8>() % 4 {
+            0 => CardSuit::Spades,
+            1 => CardSuit::Hearts,
+            2 => CardSuit::Diamonds,
+            _ => CardSuit::Clubs,
+        };
+        cards.push(Card::new(number, suit));
+    }
+    cards
+}
+
 pub fn heap_up(cards: &Vec<Card>) {
     // generator cards display in oneline
     let cards_len = cards.len();
