@@ -1,3 +1,4 @@
+use std::io;
 // crate a card by println!
 pub fn new_card(card: Card) {
     // green border, red text, white background
@@ -81,6 +82,31 @@ pub fn heap_up(cards: &Vec<Card>) {
     print!("\x1b[32m──╯");
     println!();
 
+}
+
+pub fn init_game() {
+    println!("=> Hi, Please check your cards.");
+    let cards = random_cards(2);
+    heap_up(&cards);
+    let mut buf = String::new();
+    'game_loop: loop {
+        println!("=> Do you want a card? (yes/no)");
+        io::stdin().read_line(&mut buf).expect("Read line error.");
+        // if buf equals yes then add a card
+        match buf.as_str() {
+            "yes" => push_card(&cards),
+            "no" => { show_cards(&cards); break 'game_loop;},
+            _ => println!("Worng input, please input again."),
+        }
+    }
+}
+
+pub fn show_cards(cards: &Vec<Card>) {
+    heap_up(cards);
+}
+
+pub fn push_card(cards: &Vec<Card>) {
+    // this card is out of init cards
 }
 
 // card number enum 1 to 10, J,Q,K,A
