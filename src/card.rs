@@ -1,5 +1,5 @@
 // crate a card by println!
-pub fn empty_card(card: Card) {
+pub fn new_card(card: Card) {
     // green border, red text, white background
     let text_len = card.number.len();
     let fix_len = 4;
