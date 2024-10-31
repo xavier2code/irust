@@ -9,16 +9,52 @@ pub fn new_card(card: Card) {
         text_len + fix_len
     };
     println!("\x1b[32m╭{}╮", "─".repeat(border_len));
-    println!("│{}{}│", card.to_text_string(), " ".repeat(border_len - text_len));
-    println!("│\x1b[31m{}\x1b[1m{}\x1b[0m{}\x1b[32m│", " ".repeat((border_len - 1)/2)
-    , card.to_suit_string(), " ".repeat((border_len - 1)/2));
+    println!("│\x1b[31m{}\x1b[0m{}│", card.to_text_string(), " ".repeat(border_len - text_len));
+    println!("│\x1b[31m{}\x1b[1m{}\x1b[0m{}\x1b[32m│", " ".repeat((border_len - 1)/2), card.to_suit_string(), " ".repeat((border_len - 1)/2));
     println!("│{}│", " ".repeat(border_len));
     println!("╰{}╯", "─".repeat(border_len));
 }
 
+pub fn heap_up(cards: &Vec<Card>) {
+    // generator cards display in oneline
+    let cards_len = cards.len();
+
+    // ╭───╭───╭───╭───╭─────╮
+    for _ in 0..cards_len {
+        print!("\x1b[32m╭───");
+    };
+    print!("\x1b[32m──╮");
+    println!();
+
+    // │1  │2  │3  │10  │k    │
+    for c in cards {
+        print!("\x1b[32m│\x1b[31m{}{}", c.to_text_string(), " ".repeat(3 - c.number.len()));
+    };
+    println!("{}\x1b[32m│"," ".repeat(2));
+
+    // │ ♠ │   │   │   │     │
+    for c in cards {
+        print!("\x1b[32m│\x1b[31m{}{}", " ".repeat(2), c.to_suit_string());
+    }
+    println!("{}\x1b[32m│"," ".repeat(2));
+
+    // │   │   │   │   │     │
+    for _ in 0..cards_len {
+        print!("\x1b[32m│{}", " ".repeat(3));
+    };
+    println!("{}\x1b[32m│"," ".repeat(2));
+
+    // ╰── ╰── ╰── ╰── ╰─────╯
+    for _ in 0..cards_len {
+        print!("\x1b[32m╰───");
+    };
+    print!("\x1b[32m──╯");
+    println!();
+
+}
+
 // card number enum 1 to 10, J,Q,K,A
 pub enum CardNumber {
-    One,
     Two,
     Three,
     Four,
@@ -37,7 +73,6 @@ pub enum CardNumber {
 impl CardNumber {
     fn len(&self) -> usize {
         match self {
-            CardNumber::One => "1".len(),
             CardNumber::Two => "2".len(),
             CardNumber::Three => "3".len(),
             CardNumber::Four => "4".len(),
@@ -55,7 +90,6 @@ impl CardNumber {
     }
     fn to_string(&self) -> String {
         match self {
-            CardNumber::One => "1".to_string(),
             CardNumber::Two => "2".to_string(),
             CardNumber::Three => "3".to_string(),
             CardNumber::Four => "4".to_string(),
