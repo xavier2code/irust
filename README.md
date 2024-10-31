@@ -23,5 +23,18 @@ This repository is about how to learn rust step by step.
 [Use rust to build your own x](https://github.com/codecrafters-io/build-your-own-x)
 
 ## Step five
+Hi, this is irust. thank you for use me to study rust lanagure.
 
-TBC
+=> Please select what you want to learn
+1. [Rust book]
+2. [Rust by example]
+3. [rustlings project]
+4. [others]
+
+=> Please select a chapter which you ineserting
+1. chapter1 [Hello world]
+2. chapter2 [variables]
+3. chapter3 [functions]
+
+=> 21 
+=> make card
