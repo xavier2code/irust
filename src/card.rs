@@ -85,7 +85,7 @@ pub fn heap_up(cards: &Vec<Card>) {
 
 pub fn init_game() {
     println!("=> Hi, Please check your cards.");
-    let cards = random_cards(2);
+    let cards = random_cards(12);
     heap_up(&cards);
 }
 
