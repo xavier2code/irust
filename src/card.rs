@@ -1,7 +1,7 @@
 use std::io;
 // crate a card by println!
 pub fn new_card(card: Card) {
-    // green border, red text, white background
+    // green border, red text
     let text_len = card.number.len();
     let fix_len = 4;
     let border_len = if text_len + fix_len > 5 {
@@ -93,11 +93,16 @@ pub fn init_game() {
         println!("=> Do you want a card? (yes/no)");
         io::stdin().read_line(&mut buf).expect("Read line error.");
         // if buf equals yes then add a card
+        println!("=> Your input is: {}", buf.as_str());
         match buf.as_str() {
             "yes" => push_card(&cards),
+            "y" => push_card(&cards),
             "no" => { show_cards(&cards); break 'game_loop;},
+            "n" => { show_cards(&cards); break 'game_loop;},
+            "q" => break 'game_loop,
             _ => println!("Worng input, please input again."),
         }
+        buf.clear();
     }
 }
 
