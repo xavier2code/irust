@@ -1,12 +1,16 @@
+use std::io;
+
 use crate::card::random_cards;
-use crate::display::pack;
+use crate::display::{pack, style};
 
 mod card;
 mod display;
 
-fn main() {
+fn main() -> io::Result<()> {
     // start the game
-    init_game();
+    // init_game();
+    // ? style
+    style()
 }
 
 fn init_game() {

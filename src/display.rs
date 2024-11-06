@@ -1,5 +1,13 @@
-use crate::card::Card;
+use std::io;
 
+use crate::card::Card;
+use crossterm::{
+    self,
+    event::{read, EnableBracketedPaste, EnableFocusChange, EnableMouseCapture, Event},
+    execute, style::{Color, Print, ResetColor, SetBackgroundColor, SetForegroundColor},
+};
+
+mod selector;
 // * crate a card by println!
 #[allow(dead_code)]
 pub fn new_card(card: Card) {
@@ -75,3 +83,34 @@ pub fn push_card(cards: &Vec<Card>) {}
 
 #[allow(dead_code, unused_variables)]
 pub fn show_cards(cards: &Vec<Card>) {}
+
+// * use keyword to move
+pub fn move_arrow() -> std::io::Result<()> {
+    let var_name = execute!(
+        std::io::stdout(),
+        EnableBracketedPaste,
+        EnableFocusChange,
+        EnableMouseCapture
+    );
+    var_name?;
+    loop {
+        match read()? {
+            Event::FocusGained => println!("FocusGained"),
+            Event::FocusLost => println!("FocusLost"),
+            Event::Key(event) => println!("{:?}", event),
+            Event::Mouse(event) => println!("{:?}", event),
+            Event::Paste(data) => println!("{:?}", data),
+            Event::Resize(width, height) => println!("New size {}x{}", width, height),
+        }
+    }
+}
+
+pub fn style() -> io::Result<()> {
+    execute!(
+        io::stdout(),
+        SetForegroundColor(Color::Blue),
+        SetBackgroundColor(Color::Red),
+        Print("Blue text and red background".to_string()),
+        ResetColor
+    )
+}
