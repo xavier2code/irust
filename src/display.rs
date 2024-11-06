@@ -1,6 +1,7 @@
 use crate::card::Card;
 
-// crate a card by println!
+// * crate a card by println!
+#[allow(dead_code)]
 pub fn new_card(card: Card) {
     // green border, red text
     let text_len = card.number.len();
@@ -26,11 +27,11 @@ pub fn new_card(card: Card) {
     println!("╰{}╯", "─".repeat(border_len));
 }
 
-pub fn heap_up(cards: &Vec<Card>) {
-    // generator cards display in oneline
+pub fn pack(cards: &Vec<Card>) {
+    // generator cards display in one line
     let cards_len = cards.len();
 
-    // sort the cards by number 2..10,j,q,k,A and suit
+    // ? sort the cards by number 2..10,j,q,k,A and suit
 
     // ╭───╭───╭───╭───╭─────╮
     for _ in 0..cards_len {
@@ -69,8 +70,8 @@ pub fn heap_up(cards: &Vec<Card>) {
     println!();
 }
 
-#[allow(dead_code)]
+#[allow(dead_code, unused_variables)]
 pub fn push_card(cards: &Vec<Card>) {}
 
-#[allow(dead_code)]
+#[allow(dead_code, unused_variables)]
 pub fn show_cards(cards: &Vec<Card>) {}
