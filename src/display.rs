@@ -4,7 +4,8 @@ use crate::card::Card;
 use crossterm::{
     self,
     event::{read, EnableBracketedPaste, EnableFocusChange, EnableMouseCapture, Event},
-    execute, style::{Color, Print, ResetColor, SetBackgroundColor, SetForegroundColor},
+    execute,
+    style::{Color, Print, ResetColor, SetBackgroundColor, SetForegroundColor, Stylize},
 };
 
 mod selector;
@@ -106,11 +107,12 @@ pub fn move_arrow() -> std::io::Result<()> {
 }
 
 pub fn style() -> io::Result<()> {
+    println!("{}", "Red foreground color & blue background.".red().on_white());
     execute!(
         io::stdout(),
-        SetForegroundColor(Color::Blue),
-        SetBackgroundColor(Color::Red),
-        Print("Blue text and red background".to_string()),
+        SetForegroundColor(Color::Red),
+        SetBackgroundColor(Color::White),
+        Print("Red text and white background.\n".to_string()),
         ResetColor
     )
 }
