@@ -8,7 +8,7 @@ mod display;
 
 fn main() -> io::Result<()> {
     // start the game
-    // init_game();
+    init_game();
     // ? style
     style()
 }
